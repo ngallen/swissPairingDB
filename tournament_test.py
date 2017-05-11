@@ -145,7 +145,6 @@ def testPairings():
             raise ValueError(
                 "After one match, players with one win should be paired.")
     print "10. After one match, players with one win are properly paired."
-    import pdb; pdb.set_trace()
 
 if __name__ == '__main__':
     testCount()

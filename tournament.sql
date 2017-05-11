@@ -6,24 +6,23 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
-CREATE DATABASE tDB;
+DROP DATABASE IF EXISTS tournament;
+CREATE DATABASE tournament;
 \c tournament;
 
 DROP TABLE IF EXISTS p CASCADE;
 DROP TABLE IF EXISTS m;
 
-CREATE TABLE p(
-	pid serial NOT NULL,
-	name VARCHAR (40) NOT NULL,
-	wins integer DEFAULT 0,
-	matches integer DEFAULT 0,
+CREATE TABLE players(
+	pid serial,
+	name TEXT NOT NULL,
 	PRIMARY KEY (pID)
 );
 
-CREATE TABLE m(
+CREATE TABLE matches(
 	mid serial NOT NULL,
-	winner VARCHAR (40) NOT NULL,
-	loser VARCHAR (40) NOT NULL,
+	winner INTEGER REFERENCES players (pid),
+	loser INTEGER REFERENCES players (pid),
 	PRIMARY KEY (mID)
 );
 
